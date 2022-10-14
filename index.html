@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <script
@@ -22,109 +22,160 @@
     ></script>
   </head>
 
-  <body>
-    <header class="p-header">
-      <div class="p-header__wrap">
-        <h1 class="p-header__title">TIMBER WOOD</h1>
+  <body x-data="{ active: false }" class="p-menu">
+    <div class="c-loader-bg js-loader-bg">
+      <div class="c-loader-dot js-loader-dot-wrap">
+        <span>TIMBER WOOD</span>
+        <!-- <span></span>
+        <span></span> -->
       </div>
-      <div class="p-hamburger" id="hamburger">
-        <div class="p-hamburger__inner">
-          <span></span>
-          <span></span>
-          <span></span>
+    </div>
+    <div x-bind:class="{'is-active' : active }" class="p-menu__outer">
+      <div
+        class="p-menu__overlay"
+        x-on:click="delayClass; active=!active;"
+      ></div>
+      <header class="p-header">
+        <div class="p-header__wrap">
+          <h1 class="p-header__title">TIMBER WOOD</h1>
         </div>
-      </div>
-    </header>
+        <button
+          type="button"
+          class="p-hamburger"
+          x-on:click="delayClass; active=!active;"
+        >
+          <span class="p-hamburger__inner">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </header>
 
-    <main>
-      <div class="p-mv">
-        <div class="p-mv__box">
-          <h1 class="p-mv__title">TIMBER WOOD</h1>
+      <main>
+        <div
+          class="p-mv"
+          x-data="{ timberShow: false }"
+          x-init="setTimeout(() => timberShow = true, 6500)"
+        >
+          <div class="p-mv__box" x-bind:class="{'is-show' : timberShow }">
+            <h1
+              class="p-mv__title"
+              x-data="{ timberTitleShow: false }"
+              x-init="setTimeout(() => timberTitleShow = true, 7500)"
+              x-bind:class="{'is-show' : timberTitleShow }"
+            >
+              <span>TIMBER WOOD</span>
+            </h1>
+          </div>
+          <div
+            class="p-mv__wrap"
+            x-data="{ figureShow: false }"
+            x-init="setTimeout(() => figureShow = true, 7800)"
+          >
+            <figure
+              class="p-mv__figure"
+              x-bind:class="{'is-show' : figureShow }"
+            >
+              <img src="/assets/img/pic01.jpg" alt="" />
+            </figure>
+            <!-- prettier-ignore -->
+            <div class="p-mv__lead" x-bind:class="{'is-show' : timberShow }">
+              <p class="js-mv_title-item">日本の、</p>
+              <p class="js-mv_title-item">いちばん暮らしやすい、</p>
+              <p class="js-mv_title-item">木の家へ。</p>
+            </div>
+          </div>
         </div>
-        <div class="p-mv__wrap">
-          <h2 class="p-mv__lead">
-            日本の、<br />いちばん暮らしやすい、<br />木の家へ。
-          </h2>
+
+        <nav class="p-nav">
+          <ul class="p-nav__list">
+            <li class="p-nav__item">
+              <a href="">お問い合わせ</a>
+            </li>
+            <li class="p-nav__item">
+              <a href="">コンセプト</a>
+            </li>
+            <li class="p-nav__item">
+              <a href="">材質のこだわり</a>
+            </li>
+            <li class="p-nav__item">
+              <a href="">過ごし方</a>
+            </li>
+            <li class="p-nav__item">
+              <a href="">製品紹介</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="p-link">
+          <a href="" class="p-link__item">サイトマップ</a>
+          <a href="" class="p-link__item">プライバシーポリシー</a>
         </div>
-      </div>
 
-      <nav class="p-nav">
-        <ul class="p-nav__list">
-          <li class="p-nav__item">
-            <a href="">お問い合わせ</a>
-          </li>
-          <li class="p-nav__item">
-            <a href="">コンセプト</a>
-          </li>
-          <li class="p-nav__item">
-            <a href="">材質のこだわり</a>
-          </li>
-          <li class="p-nav__item">
-            <a href="">過ごし方</a>
-          </li>
-          <li class="p-nav__item">
-            <a href="">製品紹介</a>
-          </li>
-        </ul>
-      </nav>
-
-      <div class="p-link">
-        <a href="" class="p-link__item">サイトマップ</a>
-        <a href="" class="p-link__item">プライバシーポリシー</a>
-      </div>
-
-      <div class="p-contents">
-        <section class="p-contents__item">
-          <a href="#">
-            <div class="p-contents__outer">
-              <div class="p-contents__inner">
-                <h3 class="p-contents__title">耳で立てる家。</h3>
-                <p class="p-contents__sub">コンセプト</p>
+        <div class="p-contents">
+          <section class="p-contents__item">
+            <a href="#">
+              <div class="p-contents__outer">
+                <div class="p-contents__inner">
+                  <h3 class="p-contents__title">耳で立てる家。</h3>
+                  <p class="p-contents__sub">コンセプト</p>
+                </div>
               </div>
-            </div>
-          </a>
-        </section>
-        <section class="p-contents__item">
-          <a href="#">
-            <div class="p-contents__inner">
-              <h3 class="p-contents__title">世代をまたぐ年輪。</h3>
-              <p class="p-contents__sub">材質のこだわり</p>
-            </div>
-          </a>
-        </section>
-        <section class="p-contents__item">
-          <a href="#">
-            <div class="p-contents__inner">
-              <h3 class="p-contents__title">薫る空間での一息。</h3>
-              <p class="p-contents__sub">過ごし方</p>
-            </div>
-          </a>
-        </section>
-        <section class="p-contents__item">
-          <a href="#">
-            <div class="p-contents__inner">
-              <h3 class="p-contents__title">「唯一」を探す。</h3>
-              <p class="p-contents__sub">製品紹介</p>
-            </div>
-          </a>
-        </section>
-      </div>
+            </a>
+          </section>
+          <section class="p-contents__item">
+            <a href="#">
+              <div class="p-contents__inner">
+                <h3 class="p-contents__title">世代をまたぐ年輪。</h3>
+                <p class="p-contents__sub">材質のこだわり</p>
+              </div>
+            </a>
+          </section>
+          <section class="p-contents__item">
+            <a href="#">
+              <div class="p-contents__inner">
+                <h3 class="p-contents__title">薫る空間での一息。</h3>
+                <p class="p-contents__sub">過ごし方</p>
+              </div>
+            </a>
+          </section>
+          <section class="p-contents__item">
+            <a href="#">
+              <div class="p-contents__inner">
+                <h3 class="p-contents__title">「唯一」を探す。</h3>
+                <p class="p-contents__sub">製品紹介</p>
+              </div>
+            </a>
+          </section>
+        </div>
 
-      <div class="p-contact">
-        <p class="p-contact__lead">
-          ご相談・お問い合わせは<br class="only-sp" />お問い合せフォームから
-        </p>
-        <a href="#" class="p-contact__btn">お問い合せ</a>
-      </div>
+        <div class="p-contact">
+          <p class="p-contact__lead">
+            ご相談・お問い合わせは<br class="only-sp" />お問い合せフォームから
+          </p>
+          <div class="p-contact__wrap">
+            <a href="#" class="p-contact__btn" id="cBtn">お問い合せ</a>
+          </div>
+        </div>
 
-      <footer class="p-footer">
-        <p class="p-footer__copy">COPYRIGHT©︎ TIMBERWOOD ALLRIGHTS RESERVED.</p>
-      </footer>
-    </main>
+        <footer class="p-footer">
+          <p class="p-footer__copy">
+            COPYRIGHT©︎ TIMBERWOOD ALLRIGHTS RESERVED.
+          </p>
+        </footer>
+      </main>
 
-    <a href="#" class="scroll-btn"
-      ><img src="/assets/img/arrow02.png" alt="スクロール"
-    /></a>
+      <a href="#" class="scroll-btn"
+        ><img src="/assets/img/arrow02.png" alt="スクロール"
+      /></a>
+    </div>
   </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"
+  ></script>
   <script src="/assets/script/common.js"></script>
 </html>
